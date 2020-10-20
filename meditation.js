@@ -24,3 +24,22 @@ setInterval(function(){
         i++;
     }
 }, 5000);
+
+const audio = document.getElementById('audioPlayer');
+
+audio.ondurationchange = () => setInitialVariables(audio);
+
+function setInitialVariables(audio) {
+    const duration = Math.round(audio.duration)
+    const minutes = Math.floor(duration / 60);
+    const seconds = duration - minutes * 60;
+    $('.audio-player .total-time').text(`${zeroGenerator(minutes)}:${zeroGenerator(seconds)}`)
+}
+
+const zeroGenerator = (time) => time < 10 ? '0' + time : time;
+
+$('.audio-player').addClass(audio.paused ? 'paused' : '')
+$('.play-button').click(() => {
+
+});
+

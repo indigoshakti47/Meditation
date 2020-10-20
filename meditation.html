@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./meditation.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 </head>
 <body>
 
@@ -13,7 +14,26 @@
         <div class="backgrounds">
             
         </div>
-        <audio></audio>
+        <div class="audio-player">
+            <div class="progress-bar"></div>
+            <div class="controls">
+                <span class="current-time">00:00</span>
+                <div class="actions">
+                    <button class="back-button">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button class="play-button" >
+                        <i class="fas fa-pause"></i>
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="forward-button">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                </div>
+                <span class="total-time">10:30</span>
+            </div>
+        </div>
+        <audio src="assets/Music.mp3" controls id="audioPlayer"></audio>
     </div>
 <script src="./meditation.js"></script>
 </body>

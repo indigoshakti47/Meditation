@@ -1,5 +1,9 @@
 * {
     margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .audio-container img {
     position: absolute;
@@ -7,4 +11,75 @@
     width: 100%;
     object-fit: cover;
 
+}
+audio {
+    display: none;
+}
+
+.audio-player {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: rgb(22,23,22);
+    background: linear-gradient(180deg, rgba(22,23,22,0) 0%, rgba(20,20,20,0.6867121848739496) 100%);
+}
+
+.audio-player .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.audio-player .controls span {
+    color: white;
+    font-size: 12px;
+}
+
+.audio-player .controls .actions {
+    display: flex;
+    align-items: center;
+}
+
+.audio-player .controls button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    margin: 0 10px;
+    border: 1px solid white;
+    color: white;
+    font-size: 15px;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.audio-player .controls button.play-button {
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background: white;
+    color: black;
+}
+.paused .controls button.play-button .fa-pause {
+    display: none;
+}
+
+.paused .controls button.play-button .fa-play {
+    display: inline-block;
+}
+
+:not(.paused) .controls button.play-button .fa-pause {
+    display: inline-block;
+}
+
+:not(.paused) .controls button.play-button .fa-play {
+    display: none;
 }
