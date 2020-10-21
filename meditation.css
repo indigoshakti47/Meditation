@@ -92,13 +92,15 @@ audio {
     position: relative;
     width: 100%;
     height: 4px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.534);
+    cursor: pointer;
+    transition: .3s;
 }
 
-.audio-player .progress-bar .indicator {
-    display: none;
+.audio-player .progress-bar:hover {
+    opacity: .8;
 }
 
 .audio-player .progress-bar .internal-bar {
@@ -107,5 +109,5 @@ audio {
     bottom: 0;
     left: 0;
     width: 0%;
-    background-color: rebeccapurple;
+    background-color: #FFF;
 }

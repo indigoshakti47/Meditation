@@ -44,14 +44,12 @@ const zeroGenerator = (time) => time < 10 ? '0' + time : time;
 
 $('.audio-player').addClass(audio.paused ? 'paused' : '')
 $('.play-button').click(() => {
-    if (audio.paused) {
-        audio.play()
-        $('.audio-player').removeClass('paused')
-    } else {
-        audio.pause()
-        $('.audio-player').addClass('paused')
-    }
+    if (audio.paused) audio.play()
+    else audio.pause()
 });
+
+audio.onpause = () => $('.audio-player').addClass('paused')
+audio.onplay = () => $('.audio-player').removeClass('paused')
 
 audio.ontimeupdate = () => {
     $('.audio-player .current-time').text(minSecGenerator(audio.currentTime));
@@ -65,8 +63,6 @@ const getCurrentPercentage = (currentTime, totalTime) => currentTime/totalTime* 
 $('.audio-player .progress-bar').click(({ offsetX }) => {
     const { clientWidth } = document.querySelector('.audio-player .progress-bar');
     const per =  getCurrentPercentage(offsetX, clientWidth);
-    $('.audio-player .progress-bar .internal-bar').css({
-        width: per + '%'
-    })
-    
+    const currentTime = (per/100) * audio.duration;
+    audio.currentTime = currentTime;
 })
