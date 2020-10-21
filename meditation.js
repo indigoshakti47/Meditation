@@ -29,17 +29,44 @@ const audio = document.getElementById('audioPlayer');
 
 audio.ondurationchange = () => setInitialVariables(audio);
 
+function minSecGenerator(totalSeconds) {
+    totalSeconds = Math.round(totalSeconds);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds - minutes * 60;
+   return `${zeroGenerator(minutes)}:${zeroGenerator(seconds)}`
+}
+
 function setInitialVariables(audio) {
-    const duration = Math.round(audio.duration)
-    const minutes = Math.floor(duration / 60);
-    const seconds = duration - minutes * 60;
-    $('.audio-player .total-time').text(`${zeroGenerator(minutes)}:${zeroGenerator(seconds)}`)
+    $('.audio-player .total-time').text(minSecGenerator(audio.duration))
 }
 
 const zeroGenerator = (time) => time < 10 ? '0' + time : time;
 
 $('.audio-player').addClass(audio.paused ? 'paused' : '')
 $('.play-button').click(() => {
-
+    if (audio.paused) {
+        audio.play()
+        $('.audio-player').removeClass('paused')
+    } else {
+        audio.pause()
+        $('.audio-player').addClass('paused')
+    }
 });
 
+audio.ontimeupdate = () => {
+    $('.audio-player .current-time').text(minSecGenerator(audio.currentTime));
+    $('.audio-player .progress-bar .internal-bar').css({
+        width: getCurrentPercentage(audio.currentTime, audio.duration) + '%'
+    })
+}
+
+const getCurrentPercentage = (currentTime, totalTime) => currentTime/totalTime* 100;
+
+$('.audio-player .progress-bar').click(({ offsetX }) => {
+    const { clientWidth } = document.querySelector('.audio-player .progress-bar');
+    const per =  getCurrentPercentage(offsetX, clientWidth);
+    $('.audio-player .progress-bar .internal-bar').css({
+        width: per + '%'
+    })
+    
+})

@@ -59,6 +59,10 @@ audio {
     background: transparent;
     cursor: pointer;
     transition: .4s;
+    outline: none;
+}
+.audio-player .controls button:hover {
+    opacity: .7;
 }
 
 .audio-player .controls button.play-button {
@@ -68,18 +72,40 @@ audio {
     background: white;
     color: black;
 }
-.paused .controls button.play-button .fa-pause {
+.audio-player.paused .controls button.play-button .fa-pause {
     display: none;
 }
 
-.paused .controls button.play-button .fa-play {
+.audio-player.paused .controls button.play-button .fa-play {
     display: inline-block;
 }
 
-:not(.paused) .controls button.play-button .fa-pause {
+.audio-player:not(.paused) .controls button.play-button .fa-pause {
     display: inline-block;
 }
 
-:not(.paused) .controls button.play-button .fa-play {
+.audio-player:not(.paused) .controls button.play-button .fa-play {
     display: none;
+}
+
+.audio-player .progress-bar {
+    position: relative;
+    width: 100%;
+    height: 4px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.534);
+}
+
+.audio-player .progress-bar .indicator {
+    display: none;
+}
+
+.audio-player .progress-bar .internal-bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    background-color: rebeccapurple;
 }
