@@ -1,0 +1,98 @@
+
+
+      .floating-button {
+        position: sticky;
+        bottom: 0;
+        right: 0;
+        margin: 15px 15px 15px auto;
+        display: block
+      }
+      .floating-button .activeIcon {
+        display: none;
+      }
+      .floating-button .inactiveIcon {
+        display: flex;
+      }
+      .floating-button.active .activeIcon {
+        display: flex;
+      }
+      .floating-button.active .inactiveIcon {
+        display: none;
+      }
+      .floating-button button {
+        display: flex;
+        align-items: center;
+        border: 0;
+        font-size: 14px;
+        color: white;
+        background-color: #8B74C8;
+        cursor: pointer;
+        outline: none;
+        transition: 0.4s;
+      }
+      .floating-button button:hover {
+        background-color: lighten(#8B74C8, 10%);
+      }
+      .floating-button-activator {
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+        border-radius: 50%;
+        font-weight: bold;
+        font-size: 16px;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        box-shadow: 2px 2px 30px #8B74C8;
+      }
+
+      .floating-button.active .floating-button-activator {
+        background-color: white;
+        color: #8B74C8;
+      }
+      .floating-button-options {
+        position: absolute;
+        bottom: 0px;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #8B74C8;
+        border-radius: 4px;
+        opacity: 0;
+        overflow: hidden;
+        visibility: hidden;
+        transition: 0.3s;
+
+      }
+      .floating-button-options i {
+          padding-right: 7px;
+      }
+      .floating-button.active .floating-button-options {
+        opacity: 1;
+        visibility: visible;
+        bottom: 45px;
+
+      }
+      button.floating-button-option {
+        margin: 0;
+        width: 100%;
+        /* &:hover {
+          background-color: rgba(255,255,255, .2);
+        } */
+      }
+      button.floating-button-option :hover {
+          background-color: rgba(255,255,255, .2);
+      }
+
+      .btn-primary {
+          background-color: #8B74C8 !important;
+          border-color: #8B74C8 !important;
+      }
+      .btn-round{
+        border-radius: 50% !important;
+      }
+      .btn-primary.focus, .btn-primary:focus {
+        box-shadow: 0 0 0 0.2rem rgb(121 38 255 / 15%) !important;
+      }
+
